@@ -1,0 +1,368 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Styling utama */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #A7C7A3, #F5E6CA); /* Sage Green → Soft Beige */
+    text-align: center;
+    color: #B76E79; /* Rose Gold */
+    overflow: hidden; /* Agar dekorasi tidak scroll */
+    position: relative;
+}
+
+/* Container */
+.container {
+    max-width: 90%;
+    padding: 20px;
+    background: rgba(255, 248, 240, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: float 3s ease-in-out infinite; /* Terapkan animasi */
+    position: absolute; /* Pastikan elemen bisa diposisikan di layar */
+    top: 50%; /* Pusatkan secara vertikal */
+    left: 50%; /* Pusatkan secara horizontal */
+    transform: translate(-50%, -50%); 
+    overflow: hidden;
+    z-index: 10;
+}
+
+@keyframes float {
+    0% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-10px); }
+    100% { transform: translate(-50%, -50%) translateY(0); }
+}
+
+/* Tata letak tiga container */
+#content-container {
+    display: flex;
+    justify-content: space-between; /* Agar tersebar merata */
+    align-items: center;
+    flex-wrap: wrap; /* Supaya tetap rapi jika layar kecil */
+    width: 100%; /* Lebarkan container */
+    padding: 20px;
+}
+
+/* Tampilkan setelah tombol ditekan */
+#content-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+}
+
+/* Efek Fade-in */
+.fade-in {
+    opacity: 100;
+    animation: fadeIn 2s ease-in forwards;
+    color:#B76E79;
+}
+
+/* Efek Marquee dalam Container */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Agar tetap dalam container */
+}
+
+/* Marquee berjalan dari kiri ke kanan */
+.marquee {
+    display: inline-block;
+    font-size: 20px;
+    color: #B76E79; /* Rose Gold */
+    animation: marquee-scroll 10s linear infinite;
+}
+
+/* Animasi Marquee */
+@keyframes marquee-scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Navigasi */
+.nav-buttons {
+    margin-top: 20px;
+    padding-top: 200px;
+}
+
+/* Styling Button */
+.main-button {
+    background-color: #B76E79; /* Rose Gold */
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 20px auto 0; /* Jarak dari atas, posisikan ke tengah */
+    text-align: center;
+}
+
+.main-button:hover {
+    background: #F7D7C4; /* Champagne */
+    color: #B76E79;
+    transform: scale(1.1);
+}
+
+.exit-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #B76E79; /* Rose Gold */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.exit-button:hover {
+    background: #F7D7C4; /* Champagne */
+    color: #B76E79;
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Efek saat tombol ditekan */
+/* Container Selamat Datang Hilang dengan Fade-Out */
+.fade-out {
+    animation: fadeOut 1.5s ease-in-out forwards;
+}
+
+/* Container Konten Muncul dengan Fade-In */
+.fade-in-show {
+    display: block;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Animasi Fade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Sections yang muncul setelah tombol ditekan */
+.hidden {
+    display: none;
+}
+
+/* Styling untuk tiga container baru */
+#content-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+#content-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+/* Styling default untuk .content-box */
+.content-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek hati jatuh */
+.heart {
+    position: absolute;
+    top: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: #B76E79; /* Warna Rose Gold */
+    transform: rotate(-45deg);
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+/* Bentuk hati dengan pseudo-element */
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #B76E79;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: 10px;
+    top: 0;
+}
+
+/* Animasi jatuh */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(var(--rotate-start));
+        opacity: 1;
+    }
+    90% {
+        opacity: 1; /* Tetap terlihat hingga mendekati bawah */
+    }
+    100% {
+        transform: translateY(100vh) rotate(var(--rotate-end));
+        opacity: 0; /* Baru menghilang di bawah */
+    }
+}
+
+@media (min-width: 1024px) { /* Hanya untuk laptop/PC */
+
+    #content-container {
+        width: 100vw; /* Lebar penuh */
+        height: 100vh; /* Tinggi penuh */
+        display: flex;
+        justify-content: space-between; /* Menyebarkan container dengan jarak seimbang */
+        align-items: center;
+        padding: 20px; /* Beri sedikit padding agar tidak terlalu mepet */
+    }
+
+    .content-box {
+        width: 32%; /* Hampir sepertiga layar agar pas tiga sejajar */
+        height: 90vh; /* Hampir seluruh tinggi layar */
+        font-size: 20px; /* Teks lebih besar */
+        padding: 40px; /* Tambah padding agar lebih nyaman */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Posisi konten di tengah */
+        align-items: center;
+    }
+
+    .content-box:hover {
+        transform: scale(1.05); /* Sedikit membesar */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bayangan lebih tegas */
+        background: rgba(255, 255, 255, 1); /* Sedikit lebih terang */
+    }
+
+    /* Tambahkan background khusus untuk Galeri */
+    #galeri-box {
+        background: url('../img/Ella\ \(28\).jpg') center/cover no-repeat;
+        color: white; /* Agar teks tetap terlihat jelas */
+        padding: 40px;
+        border-radius: 10px;
+        position: relative; /* Dibutuhkan untuk overlay */
+    }
+
+    #pesan-box {
+        background: url('../img/message.jpg') center/cover no-repeat;
+        color: white; /* Agar teks tetap terlihat jelas */
+        padding: 40px;
+        border-radius: 10px;
+        position: relative; /* Dibutuhkan untuk overlay */
+    }
+
+    /* Overlay transparan agar teks lebih terbaca */
+    #galeri-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Lapisan gelap transparan */
+        border-radius: 10px;
+        z-index: 0;
+    }
+
+    /* Pastikan teks berada di atas overlay */
+    #galeri-box h2, 
+    #galeri-box p {
+        position: relative;
+        z-index: 1;
+    }
+
+    #pesan-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Lapisan gelap transparan */
+        border-radius: 10px;
+        z-index: 0;
+    }
+
+    /* Pastikan teks berada di atas overlay */
+    #pesan-box h2, 
+    #pesan-box p {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+    #content-container {
+        flex-direction: column; /* Ubah jadi vertikal di smartphone */
+        align-items: stretch;
+    }
+
+    .content-box {
+        width: 95%; /* Lebarkan agar lebih proporsional */
+    }
+
+    .marquee {
+        font-size: 16px; /* Ukuran font lebih kecil untuk layar kecil */
+    }
+
+    h1 {
+        font-size: 22px; /* Sesuaikan ukuran judul */
+    }
+
+    .main-button, .submenu-btn {
+        font-size: 16px; /* Sesuaikan ukuran tombol */
+        padding: 10px 25px;
+    }
+
+    .content-box {
+        padding: 15px; /* Kurangi padding agar tetap proporsional */
+    }
+
+    @media (max-width: 1023px) {
+        .content-box:active {
+            transform: scale(1.03); /* Efek klik */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .content-box {
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+            will-change: transform, box-shadow;
+        }
+    }
+}
