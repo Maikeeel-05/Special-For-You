@@ -5,29 +5,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const exitButton = document.getElementById("exit-button");
 
     mainButton.addEventListener("click", function () {
-        welcomeContainer.classList.add("fade-out");
-
+        welcomeContainer.style.opacity = "0"; // Fade-out
         setTimeout(() => {
-            welcomeContainer.style.display = "none"; 
-
-            contentContainer.classList.remove("hidden");
-            contentContainer.classList.add("fade-in-show");
-
-            // Tampilkan tombol keluar
-            exitButton.classList.remove("hidden");
-        }, 1500);
+            welcomeContainer.style.display = "none";
+            contentContainer.style.display = "block";
+            setTimeout(() => {
+                contentContainer.style.opacity = "1"; // Fade-in
+            }, 50); 
+        }, 500); // Lebih cepat
     });
-
+    
     exitButton.addEventListener("click", function () {
-        contentContainer.classList.add("fade-out");
-
+        contentContainer.style.opacity = "0"; // Fade-out
         setTimeout(() => {
-            contentContainer.classList.add("hidden");
-            contentContainer.classList.remove("fade-in-show");
-
+            contentContainer.style.display = "none";
             welcomeContainer.style.display = "block";
-            welcomeContainer.classList.remove("fade-out");
-        }, 1500);
+            setTimeout(() => {
+                welcomeContainer.style.opacity = "1"; // Fade-in
+            }, 50);
+        }, 500);
     });
 
     // Container untuk love jatuh
