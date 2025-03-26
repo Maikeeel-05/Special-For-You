@@ -8,25 +8,34 @@
 </head>
 <body>
     <!-- Container Selamat Datang -->
+    <div id="welcome-container" class="container">
+        <h1 class="fade-in">Selamat Datang, Ella ✨</h1>
+        <div class="marquee-container">
+            <p class="marquee">Ini adalah website spesial yang dibuat hanya untukmu ❤️</p>
+        </div>
+        <button id="main-button" class="main-button">Masuk</button>
+    </div>
+
+    <!-- Container untuk Surat, Galeri, dan Surprise (default: tersembunyi) -->
     <div id="content-container" class="hidden">
         <button id="exit-button" class="exit-button hidden">Keluar</button>
         
         <div class="content-box" id="pesan-box">
-            <h2>📜 Surat</h2>
+            <h2>📜 Pesan</h2>
             <p>Laman pesan antara Aku dan Kamu.</p>
         </div>
-    
+
         <div class="content-box" id="galeri-box">
             <h2>📸 Galeri</h2>
             <p>Kumpulan Foto yang Kamu Kirimkan Untukku.</p>
         </div>
-    
+
         <div class="content-box" id="surprise-box">
             <h2>🎁 Surprise</h2>
             <p>Ada sesuatu yang spesial untukmu di sini!</p>
         </div>
     </div>
-    
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>
